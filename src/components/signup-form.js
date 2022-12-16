@@ -1,9 +1,9 @@
 import { useState } from "react";
-// import { useAuth } from "../context/auth-context";
+import { useAuth } from "../context/auth-context";
 import Input from "./input";
 
 function SignupForm() {
-  // const { signup } = useAuth();
+  const { signup } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,7 +20,7 @@ function SignupForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    // signup(formData);
+    signup(formData);
   }
 
   return (
