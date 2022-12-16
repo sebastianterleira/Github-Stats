@@ -14,7 +14,9 @@ function UnauthenticatedApp() {
     <>
       <h1>Welcome to Github Stats</h1>
       {showLogin ? <LoginForm /> : <SignupForm />}
-      <button onClick={handleLinkChange}>{showLogin ? "Create Account" : "Log in"}</button>
+      <button onClick={handleLinkChange}>
+        {showLogin ? "Create Account" : "Log in"}
+      </button>
     </>
   )
 }

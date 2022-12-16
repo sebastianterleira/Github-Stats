@@ -4,7 +4,7 @@ import { getGithubUser } from "./services/github-service";
 
 function AuthenticatedApp() {
   const [data, setData] = useState("");
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState({});
   useEffect(() => {
     getGithubUser(search).then(setData).catch(console.log);
   }, [search]);
