@@ -10,6 +10,7 @@ import {
   removeFavorite,
 } from "./services/favorites-services";
 
+
 function AuthenticatedApp() {
   const { logout } = useAuth();
   const [favorites, setFavorites] = useState([]);
