@@ -11,12 +11,9 @@ function AuthenticatedApp() {
 
   return (
     <div className="container">
-      <h1>Search Page</h1>
       <div className="grid">
         <div>
           <input onChange={(event) => setSearch(event.target.value)} placeholder="Ingresa el nombre de usuario" />
-        </div>
-        <div>
         </div>
       </div>
       <article>
