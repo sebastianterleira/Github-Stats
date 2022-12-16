@@ -8,7 +8,7 @@ import {
   createFavorite,
   getFavorites,
   removeFavorite,
-} from "src/services/favorites-services.js";
+} from "./services/favorites-services";
 
 
 function AuthenticatedApp() {
@@ -23,8 +23,7 @@ function AuthenticatedApp() {
     const data = {
       github_login: github.login,
       github_name: github.name,
-      pokemon_avatar_url:
-      github.avatar_url,
+      github_avatar_url: github.avatar_url,
     };
 
     createFavorite(data)
@@ -33,9 +32,7 @@ function AuthenticatedApp() {
   }
 
   function handleRemoveFavorite(github) {
-    const favorite = favorites.find(
-      (fav) => fav.github_name === github?.name
-    );
+    const favorite = favorites.find((fav) => fav.github_name === github?.name);
 
     removeFavorite(favorite.id).then(() => {
       const newFavorites = favorites.filter(
@@ -49,17 +46,17 @@ function AuthenticatedApp() {
   return (
     <div className="container">
       <Routes>
-      <Route 
-        path="/"
-        element={
-          <SearchPage
-          favorites={favorites}
-          onAddFavorite={handleAddFavorite}
-          onRemoveFavorite={handleRemoveFavorite}
-          />
-        }
-      />
-      <Route
+        <Route
+          path="/"
+          element={
+            <SearchPage
+              favorites={favorites}
+              onAddFavorite={handleAddFavorite}
+              onRemoveFavorite={handleRemoveFavorite}
+            />
+          }
+        />
+        <Route
           path="favorites"
           element={<FavoritePage favorites={favorites} />}
         />
