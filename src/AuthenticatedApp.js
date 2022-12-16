@@ -4,10 +4,10 @@ import { getGithubUser } from "./services/github-service";
 
 function AuthenticatedApp() {
   const [data, setData] = useState("");
+  const [search, setSearch] = useState(null);
   useEffect(() => {
-    getGithubUser("SebastianTerleira").then(setData).catch(console.log);
-  }, []);
-  const [search, setSearch] = useState("");
+    getGithubUser(search).then(setData).catch(console.log);
+  }, [search]);
 
   return (
     <div className="container">
@@ -17,7 +17,6 @@ function AuthenticatedApp() {
           <input onChange={(event) => setSearch(event.target.value)} placeholder="Ingresa el nombre de usuario" />
         </div>
         <div>
-          <button onClick={getGithubUser}>Buscar</button>
         </div>
       </div>
       <article>
