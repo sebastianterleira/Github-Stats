@@ -8,7 +8,7 @@ import {
   createFavorite,
   getFavorites,
   removeFavorite,
-} from "./services/favorites-service";
+} from "src/services/favorites-services.js";
 
 
 function AuthenticatedApp() {

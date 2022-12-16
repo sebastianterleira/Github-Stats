@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
+import { Link } from "react-router-dom";
 
 function SearchPage({favorites, onAddFavorite, onRemoveFavorite }) {
   const [data, setData] = useState("");
@@ -31,6 +32,7 @@ function SearchPage({favorites, onAddFavorite, onRemoveFavorite }) {
 					>
 					</GithubData>
         )}
+      <Link to="/favorites">Go to Favorites</Link>
       </article>
 		</div>
 	);
