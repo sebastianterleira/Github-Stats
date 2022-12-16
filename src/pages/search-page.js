@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getGithubUser } from "./services/github-service";
-import GithubData from "./components/github-data";
+import { getGithubUser } from "../services/github-service";
+import GithubData from "../components/github-data";
 
 function SearchPage() {
   const [data, setData] = useState("");
