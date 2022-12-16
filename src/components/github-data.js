@@ -1,7 +1,6 @@
 export default function GithubData({ github }) {
   return (
     <div>
-
       <img src={github.avatar_url} alt="avatar" />
     <div className="container">
       <h4>{github.login}</h4>
