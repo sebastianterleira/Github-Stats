@@ -1,19 +1,10 @@
-import React from "react";
-import { ReactDOM } from "react";
+import AuthenticatedApp from "./AuthenticatedApp";
+import { useAuth } from "./context/auth-context";
+import UnauthenticatedApp from "./UnauthenticatedApp"
 
 function App() {
-  return (
-    <form>
-      <div>
-        <label htmlFor="email">email</label>
-        <input id="email" name="email" type="email" />
-      </div>
-      <div>
-        <label htmlFor="password">password</label>
-        <input id="password" name="password" type="password"/>
-      </div>
-    </form>
-  );
+  const { user } = useAuth();
+  return user ? <AuthenticatedApp /> : <UnauthenticatedApp />;
 }
 
 export default App;
