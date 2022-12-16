@@ -1,6 +1,18 @@
+import React from "react";
+import { ReactDOM } from "react";
+
 function App() {
   return (
-    <h1>Welcome to Github Stats</h1>
+    <form>
+      <div>
+        <label htmlFor="email">email</label>
+        <input id="email" name="email" type="email" />
+      </div>
+      <div>
+        <label htmlFor="password">password</label>
+        <input id="password" name="password" type="password"/>
+      </div>
+    </form>
   );
 }
 
