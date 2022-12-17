@@ -3,6 +3,7 @@ export const colors = {
     dark: "#212121",
     medium: "#666666",
     light: "#E0E0E0",
+    darklight: "#828282",
   },
   pink: {
     50: "#FDF2F8",
@@ -45,6 +46,7 @@ export const colors = {
     100: "#FEF3C7",
     200: "#FDE68A",
     300: "#FCD34D",
+    350: "#F2C94C",
     400: "#FBBF24",
     500: "#F59E0B",
     600: "#D97706",

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import FavoriteCard from "../components/favorite-card";
 
+
 const Wrapper = styled("div")`
 width: 411px;
 height: 100%;
@@ -18,7 +19,6 @@ function FavoritePage({ favorites }) {
       ))}
 
       {/* <Link to="/">Go back to search</Link> */}
-
     </Wrapper>
   );
 }

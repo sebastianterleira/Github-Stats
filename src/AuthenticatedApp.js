@@ -85,7 +85,6 @@ function AuthenticatedApp() {
           element={<ProfilePage />}
         />
       </Routes>
-      <CustomButton onClick={logout}>Logout</CustomButton>
       <Footer />
     </Wrapper>
   );

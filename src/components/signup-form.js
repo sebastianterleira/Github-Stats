@@ -1,6 +1,26 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import Input from "./input";
+import { colors, typography } from "../styles";
+import styled from "@emotion/styled";
+
+const ButtonSingUp = styled.button`
+  background: #2D9CDB;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border:none;
+  color: ${colors.white};
+  padding: 8px 16px;
+  width: 170px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 32px;
+`
 
 function SignupForm() {
   const { signup } = useAuth();
@@ -25,7 +45,13 @@ function SignupForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form css={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+      `}
+      onSubmit={handleSubmit}>
         <Input
           name="email"
           type="email"
@@ -47,6 +73,7 @@ function SignupForm() {
           type="first_name"
           value={first_name}
           onChange={handleChange}
+          placeholder="*******"
           label="First Name"
         />
         <Input
@@ -54,9 +81,10 @@ function SignupForm() {
           type="last_name"
           value={last_name}
           onChange={handleChange}
+          placeholder="*******"
           label="Last Name"
         />
-        <button type="submit">Create Account</button>
+        <ButtonSingUp type="submit">Create Account</ButtonSingUp>
       </form>
     </div>
   );

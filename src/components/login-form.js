@@ -30,6 +30,7 @@ const ButtonLogin = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 32px;
 `
 
 function LoginForm() {
