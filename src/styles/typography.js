@@ -1,5 +1,5 @@
 export const fonts = {
-  primary: `"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  primary: `"Source Code Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif`,
 };
 
@@ -40,7 +40,7 @@ export const typography = {
     line-height: 2.25rem;
     `,
     lg: `
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 2.5rem;
     `,
     xl: `
