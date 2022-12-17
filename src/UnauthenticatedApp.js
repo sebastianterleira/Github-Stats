@@ -8,34 +8,27 @@ const Title = styled.h1`
   ${typography.head.lg}
   font-weight: 400;
   text-align: center;
-width: 264px;
-Height: 80px
-Top: 48px;
-padding-bottom:96px;
-`
+  width: 264px;
+  Height: 80px
+  Top: 48px;
+  padding-bottom:96px;
+  `
 
 const Wrapper = styled.div`
-width: 411px;
-height: 100%;
-margin: auto;
-padding: 48px 74px;
-display: flex;
-justify-content: center;
-flex-direction: column;
+  width: 411px;
+  height: 100%;
+  margin: auto;
+  padding: 48px 74px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  `
 
-`
-const DivTitle = styled.div`
-
-`
-const DivBody = styled.div`
-// text-align: center;
-`
 const CustomButton = styled.button`
 background: none;
 border:none;
 color: #2D9CDB;
 padding: 8px 16px;
-
 `
 
 function UnauthenticatedApp() {

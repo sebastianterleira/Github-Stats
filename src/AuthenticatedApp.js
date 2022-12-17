@@ -11,6 +11,23 @@ import {
 } from "./services/favorites-services";
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
+import styled from "@emotion/styled";
+
+const Wrapper = styled.div`
+width: 411px;
+height: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+`
+const CustomButton = styled.button`
+background: none;
+border:none;
+color: #2D9CDB;
+padding: 8px 16px;
+`
 
 
 function AuthenticatedApp() {
@@ -47,7 +64,7 @@ function AuthenticatedApp() {
   }
 
   return (
-    <div className="container">
+    <Wrapper>
       <Routes>
         <Route
           path="/"
@@ -68,9 +85,9 @@ function AuthenticatedApp() {
           element={<ProfilePage />}
         />
       </Routes>
-      <button onClick={logout}>Logout</button>
+      <CustomButton onClick={logout}>Logout</CustomButton>
       <Footer />
-    </div>
+    </Wrapper>
   );
 }
 export default AuthenticatedApp;

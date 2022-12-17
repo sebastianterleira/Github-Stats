@@ -2,9 +2,12 @@ import styled from "@emotion/styled";
 import FavoriteCard from "../components/favorite-card";
 
 const Wrapper = styled("div")`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+width: 411px;
+height: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
 `;
 
 function FavoritePage({ favorites }) {
@@ -13,6 +16,9 @@ function FavoritePage({ favorites }) {
       {favorites.map((fav, index) => (
         <FavoriteCard key={`git${index}`} item={fav} />
       ))}
+
+      {/* <Link to="/">Go back to search</Link> */}
+
     </Wrapper>
   );
 }

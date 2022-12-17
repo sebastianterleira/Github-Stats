@@ -3,6 +3,32 @@ import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
 import { BsGithub } from "react-icons/bs";
 import { colors } from "../styles/colors";
+import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+import { colors, typography } from "../styles";
+
+const StyledInput = styled("input")`
+${typography.text.xl}
+font-weight: 400;
+background: ${colors.white};
+border-radius: 4px;
+padding: 4px 8px;
+::placeholder {
+  color: ${colors.gray.light};
+}
+box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+margin-top:36px;
+text-align: center;
+`
+
+const Wrapper = styled.div`
+width: 411px;
+height: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
+`
 
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   const [query, setQuery] = useState([]);
@@ -46,13 +72,11 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   );
 
   return (
-    <div className="grid">
-      <div>
-        <input
+    <Wrapper>
+        <StyledInput
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Ingresa el nombre de usuario"
+          placeholder="username"
         />
-      </div>
       <article>
         {status === "idle" && regularContent}
         {status === "success" && (
@@ -65,7 +89,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
         )}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
       </article>
-    </div>
+    </Wrapper>
   );
 }
 
