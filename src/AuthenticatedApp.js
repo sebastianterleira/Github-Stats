@@ -9,6 +9,7 @@ import {
   getFavorites,
   removeFavorite,
 } from "./services/favorites-services";
+import Footer from "./components/footer";
 
 
 function AuthenticatedApp() {
@@ -62,6 +63,7 @@ function AuthenticatedApp() {
         />
       </Routes>
       <button onClick={logout}>Logout</button>
+      <Footer />
     </div>
   );
 }

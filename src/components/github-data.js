@@ -22,8 +22,6 @@ const GitHubImage = styled("img")`
   max-width: 150px;
 `;
 
-
-
 export default function GithubData({ github,
   isFavorite,
   onAddFavorite,
