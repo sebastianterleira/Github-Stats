@@ -9,6 +9,7 @@ margin: auto;
 display: flex;
 justify-content: center;
 flex-direction: column;
+gap: 16px;
 `;
 
 function FavoritePage({ favorites }) {
@@ -17,8 +18,6 @@ function FavoritePage({ favorites }) {
       {favorites.map((fav, index) => (
         <FavoriteCard key={`git${index}`} item={fav} />
       ))}
-
-      {/* <Link to="/">Go back to search</Link> */}
     </Wrapper>
   );
 }
