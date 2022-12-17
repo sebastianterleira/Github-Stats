@@ -2,9 +2,12 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
 const Wrapper = styled("div")`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+width: 411px;
+height: 100%;
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
 `;
 
 const GithubCard = styled("div")`
@@ -19,7 +22,7 @@ function FavoritePage({ favorites }) {
           {fav.github_name}
         </GithubCard>
       ))}
-      <Link to="/">Go back to search</Link>
+      {/* <Link to="/">Go back to search</Link> */}
     </Wrapper>
   );
 }

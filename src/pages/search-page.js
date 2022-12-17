@@ -6,13 +6,17 @@ import styled from "@emotion/styled";
 import { colors, typography } from "../styles";
 
 const StyledInput = styled("input")`
-  background: ${colors.white};
-  border-radius: 4px;
-  padding: 4px 8px;
-  ::placeholder {
-    color: ${colors.gray.light};
-  }
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+${typography.text.xl}
+font-weight: 400;
+background: ${colors.white};
+border-radius: 4px;
+padding: 4px 8px;
+::placeholder {
+  color: ${colors.gray.light};
+}
+box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+margin-top:36px;
+text-align: center;
 `
 
 const Wrapper = styled.div`
@@ -22,12 +26,6 @@ margin: auto;
 display: flex;
 justify-content: center;
 flex-direction: column;
-`
-const DivContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0px;
 `
 
 
