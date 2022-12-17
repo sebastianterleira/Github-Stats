@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
-import { BsGithub } from "react-icons/bs";
-import { colors } from "../styles/colors";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { colors, typography } from "../styles";
@@ -19,6 +17,7 @@ padding: 4px 8px;
 box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
 margin-top:36px;
 text-align: center;
+border:none;
 `
 
 const Wrapper = styled.div`
@@ -30,29 +29,22 @@ justify-content: center;
 flex-direction: column;
 `
 
+
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
-  const [query, setQuery] = useState([]);
+  const [query, setQuery] = useState("");
   const [state, setState] = useState({
     status: "idle", // success - error - pending
     data: null,
     error: null,
   });
   const { status, data: github, error } = state;
-
+  
   useEffect(() => {
     getGithubUser(query)
       .then((data) => {
-        // setState({
-        //   status: "pending",
-        // });
-        setState({
-          status: "success",
-          data: data,
-          error: null,
-        });
+        setState({ status: "success", data: data, error: null });
       })
-      .catch((error) => { // no muestra el error
-        console.log(error);
+      .catch((error) => {
         setState({
           status: "error",
           data: null,
@@ -62,13 +54,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   }, [query]); // al inicio status idle -> loading -> success
 
   const isFavorite = Boolean(
-    favorites.find((fav) => fav.username === github?.login)
-  );
-
-  const regularContent = (
-    <>
-      <BsGithub color={colors.yellow[500]} /> No Users...
-    </>
+    favorites.find((fav) => fav.github_name === github?.name)
   );
 
   return (
@@ -78,7 +64,8 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
           placeholder="username"
         />
       <article>
-        {status === "idle" && regularContent}
+        {status === "pending" && "Loading..."}
+        {status === "idle" && "Ready to search"}
         {status === "success" && (
           <GithubData
             github={github}
@@ -88,6 +75,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
           />
         )}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
+         <Link to="/favorites">Go to Favorites</Link>
       </article>
     </Wrapper>
   );
