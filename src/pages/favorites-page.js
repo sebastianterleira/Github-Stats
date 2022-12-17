@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 
 const Wrapper = styled("div")`
   display: flex;
@@ -17,10 +16,9 @@ function FavoritePage({ favorites }) {
       {favorites.map((fav, index) => (
         <GithubCard key={`git${index}`}>
           {fav.name}
-					{fav.avatar_url}
+					<img src={fav.avatar_url} alt={fav.name}/> 
         </GithubCard>
       ))}
-      <Link to="/">Go back to search</Link>
     </Wrapper>
   );
 }
