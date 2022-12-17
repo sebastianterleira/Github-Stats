@@ -18,17 +18,11 @@ width: 411px;
 height: 100%;
 margin: auto;
 display: flex;
-justify-content: center;
+justify-content: space-between;
 flex-direction: column;
-
+position: relative;
 `
-const CustomButton = styled.button`
-background: none;
-border:none;
-color: #2D9CDB;
-padding: 8px 16px;
-`
-
+  
 
 function AuthenticatedApp() {
   const { logout } = useAuth();
@@ -65,27 +59,27 @@ function AuthenticatedApp() {
 
   return (
     <Wrapper>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <SearchPage
-              favorites={favorites}
-              onAddFavorite={handleAddFavorite}
-              onRemoveFavorite={handleRemoveFavorite}
-            />
-          }
-        />
-        <Route
-          path="favorites"
-          element={<FavoritePage favorites={favorites} />}
-        />
-        <Route
-          path="profile-page"
-          element={<ProfilePage />}
-        />
-      </Routes>
-      <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SearchPage
+                favorites={favorites}
+                onAddFavorite={handleAddFavorite}
+                onRemoveFavorite={handleRemoveFavorite}
+              />
+            }
+          />
+          <Route
+            path="favorites"
+            element={<FavoritePage favorites={favorites} />}
+          />
+          <Route
+            path="profile-page"
+            element={<ProfilePage />}
+          />
+        </Routes>
+        <Footer />
     </Wrapper>
   );
 }
