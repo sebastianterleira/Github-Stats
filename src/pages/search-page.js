@@ -33,7 +33,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   }, [query]); // al inicio status idle -> loading -> success
 
   const isFavorite = Boolean(
-    favorites.find((fav) => fav.github_login === github?.login)
+    favorites.find((fav) => fav.username === github?.login)
   );
 
 	const regularContent = (

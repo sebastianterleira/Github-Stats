@@ -23,10 +23,9 @@ function AuthenticatedApp() {
 
   function handleAddFavorite(github) {
     const data = {
-      github_id: github.id,
-      github_name: github.name,
-      github_login: github.login,
-      github_avatar_url: github.avatar_url,
+      name: github.name,
+      username: github.login,
+      avatar_url: github.avatar_url,
     };
 
     console.log(data);
@@ -36,11 +35,11 @@ function AuthenticatedApp() {
   }
 
   function handleRemoveFavorite(github) {
-    const favorite = favorites.find((fav) => fav.github_login === github?.login);
+    const favorite = favorites.find((fav) => fav.username === github?.login);
 
     removeFavorite(favorite.id).then(() => {
       const newFavorites = favorites.filter(
-        (fav) => fav.github_login !== github.login
+        (fav) => fav.username !== github.login
       );
 
       setFavorites(newFavorites);
