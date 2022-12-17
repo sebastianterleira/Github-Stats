@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
 import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
 import { BsGithub } from "react-icons/bs";
 import { colors } from "../styles/colors";
 
