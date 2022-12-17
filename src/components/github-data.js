@@ -22,7 +22,9 @@ const GitHubImage = styled("img")`
   max-width: 150px;
 `;
 
-export default function GithubData({ github,
+
+export default function GithubData({ 
+  github,
   isFavorite,
   onAddFavorite,
   onRemoveFavorite
@@ -45,6 +47,7 @@ export default function GithubData({ github,
     <GitHubImage src={github.avatar_url} alt="avatar" />
       <div className="container">
         <h4>{github.login}</h4>
+        <h4>{github.id}</h4>
         <p>star</p>
         <p>{github.bio}</p>
         <p>Followers {github.followers}</p>
