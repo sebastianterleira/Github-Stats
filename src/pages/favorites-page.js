@@ -15,8 +15,9 @@ function FavoritePage({ favorites }) {
   return (
     <Wrapper>
       {favorites.map((fav, index) => (
-        <GithubCard type={fav.github_login} key={`github${index}`}>
+        <GithubCard key={`git${index}`}>
           {fav.github_name}
+					{fav.github_avatar_url}
         </GithubCard>
       ))}
       <Link to="/">Go back to search</Link>

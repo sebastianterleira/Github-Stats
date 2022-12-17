@@ -23,22 +23,24 @@ function AuthenticatedApp() {
 
   function handleAddFavorite(github) {
     const data = {
-      github_login: github.login,
+      github_id: github.id,
       github_name: github.name,
+      github_login: github.login,
       github_avatar_url: github.avatar_url,
     };
 
+    console.log(data);
     createFavorite(data)
-      .then((newFavorite) => setFavorites([...favorites, newFavorite]))
-      .catch(console.log);
+    .then((newFavorite) => setFavorites([...favorites, newFavorite]))
+    .catch(console.log);
   }
 
   function handleRemoveFavorite(github) {
-    const favorite = favorites.find((fav) => fav.github_name === github?.name);
+    const favorite = favorites.find((fav) => fav.github_login === github?.login);
 
     removeFavorite(favorite.id).then(() => {
       const newFavorites = favorites.filter(
-        (fav) => fav.github_name !== github.name
+        (fav) => fav.github_login !== github.login
       );
 
       setFavorites(newFavorites);
