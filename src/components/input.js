@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import { colors } from "../styles";
 
 const StyledInput = styled("input")`
+  background: ${colors.white};
+  border-radius: 4px;
+  padding: 4px 8px;
   ::placeholder {
     color: ${colors.gray.light};
   }
