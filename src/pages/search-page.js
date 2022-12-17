@@ -4,7 +4,13 @@ import GithubData from "../components/github-data";
 import { BsGithub } from "react-icons/bs";
 import { colors } from "../styles/colors";
 
-function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
+import { Routes, Route } from "react-router-dom";
+import FollowerPage from "../pages/followers-page";
+import {
+getGithubFollowers,
+} from "../services/github-service";
+
+function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers }) {
   const [query, setQuery] = useState([]);
   const [state, setState] = useState({
     status: "idle", // success - error - pending
@@ -13,19 +19,24 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   });
   const { status, data: github, error } = state;
 
+  // const [followers, setFollowers] = useState([]);
+
   useEffect(() => {
     getGithubUser(query)
       .then((data) => {
         // setState({
         //   status: "pending",
         // });
+        console.log(data);
         setState({
           status: "success",
           data: data,
           error: null,
         });
+        console.log(state);
       })
       .catch((error) => { // no muestra el error
+        console.log("bet");
         console.log(error);
         setState({
           status: "error",
@@ -34,6 +45,16 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
         });
       });
   }, [query]); // al inicio status idle -> loading -> success
+
+  // useEffect(() => {
+
+  // }, []);
+
+  function GetFollowers() {
+    getGithubFollowers("pauloTijero").then(onFollowers);
+    console.log("setFollowers ------");
+    // console.log(followers);
+  }
 
   const isFavorite = Boolean(
     favorites.find((fav) => fav.username === github?.login)
@@ -61,9 +82,11 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
             onAddFavorite={onAddFavorite}
             onRemoveFavorite={onRemoveFavorite}
             isFavorite={isFavorite}
+            fnFollowers = {GetFollowers}
           />
         )}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
+        
       </article>
     </div>
   );

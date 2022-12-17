@@ -11,15 +11,31 @@ import {
 } from "./services/favorites-services";
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
+import FollowerPage from "./pages/followers-page";
+// import {
+// getGithubFollowers,
+// getGithubFollowing,
+// } from "./services/github-service";
 
 
 function AuthenticatedApp() {
   const { logout } = useAuth();
   const [favorites, setFavorites] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  
+  console.log("follow ---->");
+  console.log(followers);
 
   useEffect(() => {
+    
     getFavorites().then(setFavorites);
   }, []);
+
+  // useEffect(() => {
+  //   getGithubFollowers("pauloTijero").then(setFollowers);
+  //   console.log("setFollowers ------");
+  //   // console.log(followers);
+  // }, []);
 
   function handleAddFavorite(github) {
     const data = {
@@ -56,6 +72,7 @@ function AuthenticatedApp() {
               favorites={favorites}
               onAddFavorite={handleAddFavorite}
               onRemoveFavorite={handleRemoveFavorite}
+              onFollowers={setFollowers}
             />
           }
         />
@@ -66,6 +83,10 @@ function AuthenticatedApp() {
         <Route
           path="profile-page"
           element={<ProfilePage />}
+        />
+        <Route
+          path="followers"
+          element={<FollowerPage followers1={followers} />}
         />
       </Routes>
       <button onClick={logout}>Logout</button>
