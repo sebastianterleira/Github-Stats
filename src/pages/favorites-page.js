@@ -7,6 +7,7 @@ width: 411px;
 height: 100%;
 margin: auto;
 display: flex;
+gap: 1rem;
 justify-content: center;
 flex-direction: column;
 `;

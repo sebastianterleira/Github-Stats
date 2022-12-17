@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoginForm from "./components/login-form";
 import SignupForm from "./components/signup-form";
 import styled from "@emotion/styled";
-import { colors, typography, fonts } from "./styles"
+import { typography } from "./styles"
 
 const Title = styled.h1`
   ${typography.head.lg}

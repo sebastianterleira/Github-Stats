@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useAuth } from "./context/auth-context";
 
 import SearchPage from "./pages/search-page";
 import FavoritePage from "./pages/favorites-page";
@@ -22,16 +21,8 @@ justify-content: center;
 flex-direction: column;
 
 `
-const CustomButton = styled.button`
-background: none;
-border:none;
-color: #2D9CDB;
-padding: 8px 16px;
-`
-
 
 function AuthenticatedApp() {
-  const { logout } = useAuth();
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
