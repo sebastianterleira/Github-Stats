@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import FavoriteCard from "../components/favorite-card";
 
 const Wrapper = styled("div")`
   display: flex;
@@ -6,18 +7,11 @@ const Wrapper = styled("div")`
   gap: 1rem;
 `;
 
-const GithubCard = styled("div")`
-  border: 2px solid white;
-`;
-
 function FavoritePage({ favorites }) {
   return (
     <Wrapper>
       {favorites.map((fav, index) => (
-        <GithubCard key={`git${index}`}>
-          {fav.name}
-					<img src={fav.avatar_url} alt={fav.name}/> 
-        </GithubCard>
+        <FavoriteCard key={`git${index}`} item={fav} />
       ))}
     </Wrapper>
   );
