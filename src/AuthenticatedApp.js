@@ -10,6 +10,7 @@ import {
   removeFavorite,
 } from "./services/favorites-services";
 import Footer from "./components/footer";
+import ProfilePage from "./pages/profile-page";
 
 
 function AuthenticatedApp() {
@@ -60,6 +61,10 @@ function AuthenticatedApp() {
         <Route
           path="favorites"
           element={<FavoritePage favorites={favorites} />}
+        />
+        <Route
+          path="profile-page"
+          element={<ProfilePage />}
         />
       </Routes>
       <button onClick={logout}>Logout</button>

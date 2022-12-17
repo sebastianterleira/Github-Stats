@@ -19,9 +19,15 @@ const Wrapper = styled("div")`
 function Footer() {
   return (
     <Wrapper>
-      <RiUser3Fill />
-      <RiSearchFill />
-      <AiFillStar />
+      <a href="/profile-page">
+        <RiUser3Fill />
+      </a>
+      <a href="/">
+        <RiSearchFill />
+      </a>
+      <a href="/favorites">
+        <AiFillStar />
+      </a>
     </Wrapper>
   );
 }
