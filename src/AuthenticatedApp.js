@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useAuth } from "./context/auth-context";
 
 import SearchPage from "./pages/search-page";
 import FavoritePage from "./pages/favorites-page";
@@ -22,10 +21,9 @@ justify-content: space-between;
 flex-direction: column;
 position: relative;
 `
-  
+
 
 function AuthenticatedApp() {
-  const { logout } = useAuth();
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
