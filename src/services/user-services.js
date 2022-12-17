@@ -15,3 +15,9 @@ export async function getUser() {
 
   return user;
 }
+
+export async function updateUser(data) {
+  const { token, ...user } = await collectionClient("/profile", {body: data, method: "PATCH"});
+  sessionStorage.setItem(tokenKey, token);
+  return user;
+}
