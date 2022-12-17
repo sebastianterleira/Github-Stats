@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import Input from "./input";
@@ -25,7 +27,13 @@ function SignupForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form css={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+      `}
+      onSubmit={handleSubmit}>
         <Input
           name="email"
           type="email"

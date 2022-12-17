@@ -59,10 +59,3 @@ for (const size in typography.text) {
   font-family: ${fonts.primary};
   `;
 }
-
-for (const size in typography.head) {
-  typography.head[size] += `
-  font-family: ${fonts.secondary};
-  font-weight: 600;
-  `;
-}

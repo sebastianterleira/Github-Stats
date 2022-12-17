@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors } from "../styles";
 
@@ -22,7 +24,9 @@ function Input({
   return (
     <div>
       {label && <label htmlFor={id || name}>{label}</label>}
-      <StyledInput
+      <StyledInput css={css`
+          display: flex;
+          `}
         id={id || name}
         name={name}
         type={type}
