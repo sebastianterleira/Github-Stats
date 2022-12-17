@@ -15,7 +15,7 @@ const DivContainer = styled.div`
   padding: 0px 16px;
 	margin: auto;
   `
-
+  
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   const [query, setQuery] = useState([]);
   const [state, setState] = useState({

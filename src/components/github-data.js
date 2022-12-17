@@ -66,7 +66,6 @@ const DataImg = styled("div")`
   margin-top: 18px;
 `
 
-
 export default function GithubData({ 
   github,
   isFavorite,
