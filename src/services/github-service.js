@@ -7,3 +7,19 @@ export function getGithubUser(query) {
       Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 
     }}).then((response) => response.json());
 }
+
+export function getGithubFollowers(user) {
+  return fetch(BASE_URI + user + "/followers", {
+    method: "GET",
+    headers: {
+      Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 
+    }}).then((response) => response.json());
+}
+
+export function getGithubRepos(user) {
+  return fetch(BASE_URI + user + "/repos", {
+    method: "GET",
+    headers: {
+      Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 
+    }}).then((response) => response.json());
+}

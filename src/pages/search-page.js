@@ -1,23 +1,44 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
 import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
-import { Link } from "react-router-dom";
+import { BsGithub } from "react-icons/bs";
+import { colors, typography } from "../styles"; 
+import styled from "@emotion/styled";
+
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	max-width: 640px;
+  padding: 0px 16px;
+	margin: auto;
+  `
 
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState([]);
   const [state, setState] = useState({
     status: "idle", // success - error - pending
     data: null,
     error: null,
   });
   const { status, data: github, error } = state;
-  
+
   useEffect(() => {
     getGithubUser(query)
       .then((data) => {
-        setState({ status: "success", data: data, error: null });
+        // setState({
+        //   status: "pending",
+        // });
+        setState({
+          status: "success",
+          data: data,
+          error: null,
+        });
       })
-      .catch((error) => {
+      .catch((error) => { // no muestra el error
+        console.log(error);
         setState({
           status: "error",
           data: null,
@@ -27,32 +48,43 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   }, [query]); // al inicio status idle -> loading -> success
 
   const isFavorite = Boolean(
-    favorites.find((fav) => fav.github_name === github?.name)
+    favorites.find((fav) => fav.username === github?.login)
+  );
+
+  const regularContent = (
+    <>
+      <BsGithub color={colors.yellow[500]} /> No Users...
+    </>
   );
 
   return (
-    <div className="grid">
-      <div>
-        <input
+      <DivContainer>
+        <input css={css`
+					margin-top: 32px;
+					margin-bottom: 16px;
+          text-align: center;
+          box-shadow: 2px 2px rgb(0 0 0 / 25%);
+          border-radius: 4px;
+          fill: #FFFFFF;
+          outline: none;
+          border-style: none;
+				`}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Ingresa el nombre de usuario"
+          placeholder="username"
         />
-      </div>
       <article>
-        {status === "pending" && "Loading..."}
-        {status === "idle" && "Ready to search"}
+        {status === "idle" && regularContent}
         {status === "success" && (
-          <GithubData
-            github={github}
-            onAddFavorite={onAddFavorite}
-            onRemoveFavorite={onRemoveFavorite}
-            isFavorite={isFavorite}
+					<GithubData
+					github={github}
+					onAddFavorite={onAddFavorite}
+					onRemoveFavorite={onRemoveFavorite}
+					isFavorite={isFavorite}
           />
-        )}
+					)}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
-         <Link to="/favorites">Go to Favorites</Link>
       </article>
-    </div>
+			</DivContainer>
   );
 }
 

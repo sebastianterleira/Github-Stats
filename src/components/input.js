@@ -10,6 +10,11 @@ const StyledInput = styled("input")`
   ::placeholder {
     color: ${colors.gray.light};
   }
+  box-shadow: 2px 2px rgb(0 0 0 / 25%);
+  border-radius: 4px;
+  fill: #FFFFFF;
+  outline: none;
+  border-style: none;
 `;
 
 function Input({

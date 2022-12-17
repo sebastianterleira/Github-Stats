@@ -13,20 +13,21 @@ const Title = styled.h1`
 `
 
 const Wrapper = styled.div`
-width: 411px;
-height: 100%;
 margin: auto;
 padding: 48px 74px;
 display: flex;
 justify-content: center;
 flex-direction: column;
+align-items: center
 `
 
 const CustomButton = styled.button`
 background: none;
 border:none;
 color: #2D9CDB;
-padding: 8px 16px;
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
 `
 
 function UnauthenticatedApp() {
