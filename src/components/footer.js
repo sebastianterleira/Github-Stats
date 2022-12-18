@@ -11,7 +11,7 @@ const Navbar = styled("footer")`
   justify-content: space-evenly;
   align-items: center;
   padding: 16px 16px;
-  gap: 50px;
+  gap: 45px;
   width: 100%;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
   margin-top: 20px;
