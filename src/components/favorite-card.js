@@ -1,6 +1,28 @@
 import styled from "@emotion/styled";
 
-function FavoriteCard({item}) {
+const GithubCard = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 8px;
+
+  background: #ffffff;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  text-decoration: none;
+  color: #000000;
+  text-decoration:none;
+	overflow: hidden;
+	transition: all 400ms ease;
+	&:hover {
+	box-shadow: 4px 4px rgb(0 0 0 / 50%);
+	transform: translateY(-6%);
+	}
+  cursor: default;
+  `;
+
   const Content = styled("div")`
     display: flex;
     flex-direction: row;
@@ -8,32 +30,21 @@ function FavoriteCard({item}) {
     padding: 0px;
     gap: 8px;
   `;
-
+  
   const Text = styled("div")`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   `;
-
-  const GithubCard = styled("div")`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    gap: 8px;
-
-    background: #ffffff;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-  `;
-
+  
+  
   const ImgGithub = styled("img")`
     width: 40px;
     height: 40px;
     border-radius: 50%;
   `;
 
+function FavoriteCard({item}) {
   return (
     <GithubCard>
       <Content>
