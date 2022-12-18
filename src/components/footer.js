@@ -4,19 +4,16 @@ import { AiFillStar } from "react-icons/ai";
 import { RiUser3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const Navbar = styled("div")`
+const Navbar = styled("footer")`
   display: flex;
   flex-direction: row;
   align-items: space-between;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 8px 16px;
+  padding: 16px 16px;
   gap: 50px;
   width: 100%;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  top: 665px;
-  left: 0px;
 `;
 
 function Footer() {

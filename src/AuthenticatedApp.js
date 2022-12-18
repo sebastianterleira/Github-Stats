@@ -61,6 +61,7 @@ function AuthenticatedApp() {
   }
 
   return (
+    <>
     <Wrapper>
       <Routes>
         <Route
@@ -71,12 +72,9 @@ function AuthenticatedApp() {
               onAddFavorite={handleAddFavorite}
               onRemoveFavorite={handleRemoveFavorite}
               onGetRepos={profile?.repos}
-              onProfile={setProfile}
-              onRepos={setRepos}
               onGetFollowers={profile?.followers}
-              onFollowers={setFollowers}
               onGetFollowing={profile?.following}
-              onFollowing={setFollowing}
+              onProfile={setProfile}
             />
           }
         />
@@ -101,8 +99,9 @@ function AuthenticatedApp() {
           element={<FollowingPage profile={profile}/>}
         />
       </Routes>
-      <Footer />
     </Wrapper>
+      <Footer />
+    </>
   );
 }
 export default AuthenticatedApp;

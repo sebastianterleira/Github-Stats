@@ -93,7 +93,6 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
 					onAddFavorite={onAddFavorite}
 					onRemoveFavorite={onRemoveFavorite}
 					isFavorite={isFavorite}
-          onProfile={onProfile}
           />
       </article>
 					)}
