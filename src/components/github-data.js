@@ -3,6 +3,8 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 // import { colors } from "../styles"
 import { typography } from "../styles/typography";
+import { getGithubRepos } from "../services/github-service";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const FavoriteButton = styled("button")`
@@ -73,9 +75,14 @@ export default function GithubData({
   isFavorite,
   onAddFavorite,
   onRemoveFavorite,
+  onProfile,
+  onRepos
   onFollowers,
 }) {
 
+  console.log(github);
+
+  console.log("Data....");
   const regularContent = (
     <>
       <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,6 +98,8 @@ export default function GithubData({
       </svg>
     </>
   );
+
+
 
   return (
     <div>
@@ -145,6 +154,7 @@ export default function GithubData({
             <LabelData>following</LabelData>
           </CardData>
 
+          <Link css={css`text-decoration:none; color: black;`} to={"/repos"}>
           <CardData>
           <DataImg>
             <svg g width="46" height="54" viewBox="0 0 46 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,6 +164,7 @@ export default function GithubData({
             <CountData>{github.public_repos}</CountData>
             <LabelData>public repos</LabelData>
           </CardData>
+          </Link>
 
           <CardData>
             <DataImg>

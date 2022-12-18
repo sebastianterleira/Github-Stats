@@ -25,7 +25,7 @@ export function getGithubFollowing(user) {
 }
 
 export function getGithubRepos(user) {
-  return fetch(BASE_URI + user + "/repos", {
+  return fetch(user, {
     method: "GET",
     headers: {
       Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 

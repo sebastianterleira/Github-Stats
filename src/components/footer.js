@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { RiSearchFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 import { RiUser3Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 // import { colors } from "../styles";
 
 const Navbar = styled("div")`
@@ -22,15 +23,15 @@ const Navbar = styled("div")`
 function Footer() {
   return (
     <Navbar>
-      <a href="/profile-page">
+      <Link to={"/profile-page"}>
         <RiUser3Fill style={{height:43,width:43,color:"#BDBDBD"}}/>
-      </a>
-      <a href="/">
+      </Link>
+      <Link to={"/"}>
         <RiSearchFill style={{height:43,width:43,color:"#828282"}}/>
-      </a>
-      <a href="/favorites">
+      </Link>
+      <Link to={"/favorites"}>
         <AiFillStar style={{height:43,width:43,color:"#BDBDBD"}} />
-      </a>
+      </Link>
     </Navbar>
   );
 }

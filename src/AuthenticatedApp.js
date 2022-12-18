@@ -16,6 +16,8 @@ getGithubFollowers,
 getGithubFollowing,
 } from "./services/github-service";
 import styled from "@emotion/styled";
+import PublicReposPage from "./pages/public-repos-page";
+import { getGithubRepos } from "./services/github-service";
 
 const Wrapper = styled.div`
 width: 411px;
@@ -29,6 +31,8 @@ position: relative;
 
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
+  const [repos, setRepos] = useState([]);
+  const [profile, setProfile] = useState([]);
   const [followers, setFollowers] = useState([]);
   
   console.log("followers authenticate ---->");
@@ -53,9 +57,9 @@ function AuthenticatedApp() {
 
   function handleAddFavorite(github) {
     const data = {
-      name: github.name,
-      username: github.login,
-      avatar_url: github.avatar_url,
+      name: github?.name,
+      username: github?.login,
+      avatar_url: github?.avatar_url,
     };
 
     console.log(data);
@@ -76,35 +80,39 @@ function AuthenticatedApp() {
     });
   }
 
+  console.log(repos)
+  console.log(profile)
+
   return (
     <Wrapper>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SearchPage
-                favorites={favorites}
-                onAddFavorite={handleAddFavorite}
-                onRemoveFavorite={handleRemoveFavorite}
-                // onFollowers = {setFollowers}
-                onFollowers = {GetFollowers}
-              />
-            }
-          />
-          <Route
-            path="favorites"
-            element={<FavoritePage favorites={favorites} />}
-          />
-          <Route
-            path="profile-page"
-            element={<ProfilePage />}
-          />
-          <Route
-            path="followers"
-            element={<FollowerPage followers1={followers} />}
-          />
-        </Routes>
-        <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <SearchPage
+              favorites={favorites}
+              onAddFavorite={handleAddFavorite}
+              onRemoveFavorite={handleRemoveFavorite}
+              onGetRepos={profile?.repos}
+              onProfile={setProfile}
+              onRepos={setRepos}
+            />
+          }
+        />
+        <Route
+          path="favorites"
+          element={<FavoritePage favorites={favorites} />}
+        />
+        <Route
+          path="profile-page"
+          element={<ProfilePage />}
+        />
+        <Route
+          path="repos"
+          element={<PublicReposPage profile={profile}/>}
+        />
+      </Routes>
+      <Footer />
     </Wrapper>
   );
 }
