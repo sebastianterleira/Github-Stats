@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { RiStarFill } from "react-icons/ri";
 
 function FollowerCard({item}) {
 

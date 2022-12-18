@@ -11,13 +11,9 @@ import {
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
 import FollowerPage from "./pages/followers-page";
-import {
-getGithubFollowers,
-getGithubFollowing,
-} from "./services/github-service";
 import styled from "@emotion/styled";
 import PublicReposPage from "./pages/public-repos-page";
-import { getGithubRepos } from "./services/github-service";
+import FollowingPage from "./pages/following-page";
 
 const Wrapper = styled.div`
 width: 411px;
@@ -32,28 +28,13 @@ position: relative;
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
   const [repos, setRepos] = useState([]);
-  const [profile, setProfile] = useState([]);
   const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
+  const [profile, setProfile] = useState([]);
   
-  console.log("followers authenticate ---->");
-  // console.log(followers);
-
   useEffect(() => {
     getFavorites().then(setFavorites);
   }, []);
-
-  // useEffect(() => {
-  //   getGithubFollowers("pauloTijero").then(setFollowers);
-  //   console.log("setFollowers ------");
-  //   // console.log(followers);
-  // }, []);
-
-  function GetFollowers(user) {
-    console.log(user);
-    getGithubFollowers(user).then(setFollowers);
-    console.log("setFollowers ------");
-    console.log(followers);
-  }
 
   function handleAddFavorite(github) {
     const data = {
@@ -62,7 +43,6 @@ function AuthenticatedApp() {
       avatar_url: github?.avatar_url,
     };
 
-    console.log(data);
     createFavorite(data)
     .then((newFavorite) => setFavorites([...favorites, newFavorite]))
     .catch(console.log);
@@ -80,9 +60,6 @@ function AuthenticatedApp() {
     });
   }
 
-  console.log(repos)
-  console.log(profile)
-
   return (
     <Wrapper>
       <Routes>
@@ -96,6 +73,10 @@ function AuthenticatedApp() {
               onGetRepos={profile?.repos}
               onProfile={setProfile}
               onRepos={setRepos}
+              onGetFollowers={profile?.followers}
+              onFollowers={setFollowers}
+              onGetFollowing={profile?.following}
+              onFollowing={setFollowing}
             />
           }
         />
@@ -110,6 +91,14 @@ function AuthenticatedApp() {
         <Route
           path="repos"
           element={<PublicReposPage profile={profile}/>}
+        />
+        <Route
+          path="followers"
+          element={<FollowerPage profile={profile}/>}
+        />
+        <Route
+          path="following"
+          element={<FollowingPage profile={profile}/>}
         />
       </Routes>
       <Footer />

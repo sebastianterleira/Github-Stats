@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import FollowerCard from "../components/follower-card";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getGithubFollowers } from "../services/github-service";
 
 const Wrapper = styled("div")`
   display: flex;
@@ -8,13 +9,25 @@ const Wrapper = styled("div")`
   gap: 1rem;
 `;
 
-function FollowerPage({ followers1 }){
-  // return <h1>Followers Page Betty</h1>
+const Title = styled.h1`
+  font-weight: 400;
+  text-align: center;
+  padding-bottom:40px;
+  padding-top:16px;
+`
+
+function FollowerPage({ profile }){
+
+  const [followers, setFollowers] = useState([]);
+
+    useEffect(() => {
+      getGithubFollowers(profile.followers_url).then(setFollowers)
+    }, [profile])
+
   return (
     <Wrapper>
-      <Link to="/">Go back to Search</Link>
-      Followers ({followers1.length})
-      {followers1.map((fav, index) => (
+      <Title>Followers ({followers.length})</Title> 
+      {followers.map((fav, index) => (
         <FollowerCard key={`git${index}`} item={fav} />
       ))}
     </Wrapper>

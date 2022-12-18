@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import Input from "./input";
 import styled from "@emotion/styled";
-import { colors, typography } from "../styles";
+import { colors } from "../styles";
 
 const Form =styled.form`
   display:flex;

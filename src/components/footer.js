@@ -3,7 +3,6 @@ import { RiSearchFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 import { RiUser3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-// import { colors } from "../styles";
 
 const Navbar = styled("div")`
   display: flex;
