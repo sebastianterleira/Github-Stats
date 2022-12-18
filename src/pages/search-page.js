@@ -48,15 +48,13 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
           data: data,
           error: null,
         });
-        console.log(state);
       })
       .catch((error) => {
-        console.log("bet");
         console.log(error);
         setState({
           status: "error",
           data: null,
-          error: "El usuario no existe! Intenta de nuevo",
+          error: "El usuario no existe! Intenta de nuevo o perdio Conexion 💀",
         });
       });
   }, [query]);

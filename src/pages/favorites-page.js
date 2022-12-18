@@ -3,7 +3,6 @@ import FavoriteCard from "../components/favorite-card";
 
 
 const Wrapper = styled("div")`
-width: 411px;
 height: 100%;
 margin: auto;
 display: flex;

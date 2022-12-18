@@ -16,7 +16,6 @@ import PublicReposPage from "./pages/public-repos-page";
 import FollowingPage from "./pages/following-page";
 
 const Wrapper = styled.div`
-width: 411px;
 height: 100%;
 margin: auto;
 display: flex;
@@ -27,9 +26,6 @@ position: relative;
 
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
-  const [repos, setRepos] = useState([]);
-  const [followers, setFollowers] = useState([]);
-  const [following, setFollowing] = useState([]);
   const [profile, setProfile] = useState([]);
   
   useEffect(() => {
@@ -100,7 +96,7 @@ function AuthenticatedApp() {
         />
       </Routes>
     </Wrapper>
-      <Footer />
+    <Footer />
     </>
   );
 }

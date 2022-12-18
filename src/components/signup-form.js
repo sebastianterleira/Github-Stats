@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { useAuth } from "../context/auth-context";
 import Input from "./input";
-import { colors, typography } from "../styles";
+import { colors } from "../styles";
 import styled from "@emotion/styled";
 
 const ButtonSingUp = styled.button`

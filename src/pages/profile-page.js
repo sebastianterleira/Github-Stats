@@ -6,9 +6,7 @@ import { colors, typography } from "../styles"
 import { updateUser } from "../services/user-services";
 
 const Wrapper = styled.div`
-width: 411px;
 height: 100%;
-margin: auto;
 padding: 48px 74px;
 display: flex;
 justify-content: center;
@@ -25,7 +23,6 @@ const Title = styled.h1`
 ${typography.head.lg}
 font-weight: 400;
 text-align: center;
-width: 264px;
 Height: 80px
 Top: 48px;
 padding-bottom:96px;

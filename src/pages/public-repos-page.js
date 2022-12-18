@@ -4,9 +4,9 @@ import RepoCard from "../components/repos-card";
 import { getGithubRepos } from "../services/github-service";
 
 const Wrapper = styled("div")`
-width: 411px;
-height: 100%;
+padding: 20px;
 margin: auto;
+height: 100%;
 display: flex;
 justify-content: center;
 flex-direction: column;

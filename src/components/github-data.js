@@ -136,7 +136,7 @@ export default function GithubData({
           font-weight: 400;
           line-height: 20px;
           text-align: center;
-        `}>{github.bio}</p>
+        `}>{github.bio === null ? "Olvide ponerme una biografia" : github.bio}</p>
         <ContainerCard>
           <Link css={css`text-decoration:none; color: black;`} to="/followers">
           <CardData>
