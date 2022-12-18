@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { RiStarFill } from "react-icons/ri";
 
-function FavoriteCard({item}) {
+function FollowerCard({item}) {
 
   const GithubCard = styled("div")`
   display: flex;
@@ -49,4 +49,4 @@ function FavoriteCard({item}) {
   );
 }
 
-export default FavoriteCard;
+export default FollowerCard;
