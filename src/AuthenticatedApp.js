@@ -11,6 +11,8 @@ import {
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
 import styled from "@emotion/styled";
+import PublicReposPage from "./pages/public-repos-page";
+import { getGithubRepos } from "./services/github-service";
 
 const Wrapper = styled.div`
 width: 411px;
@@ -25,6 +27,8 @@ position: relative;
 
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
+  const [repos, setRepos] = useState([]);
+  const [profile, setProfile] = useState([]);
 
   useEffect(() => {
     getFavorites().then(setFavorites);
@@ -32,9 +36,9 @@ function AuthenticatedApp() {
 
   function handleAddFavorite(github) {
     const data = {
-      name: github.name,
-      username: github.login,
-      avatar_url: github.avatar_url,
+      name: github?.name,
+      username: github?.login,
+      avatar_url: github?.avatar_url,
     };
 
     console.log(data);
@@ -55,29 +59,39 @@ function AuthenticatedApp() {
     });
   }
 
+  console.log(repos)
+  console.log(profile)
+
   return (
     <Wrapper>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <SearchPage
-                favorites={favorites}
-                onAddFavorite={handleAddFavorite}
-                onRemoveFavorite={handleRemoveFavorite}
-              />
-            }
-          />
-          <Route
-            path="favorites"
-            element={<FavoritePage favorites={favorites} />}
-          />
-          <Route
-            path="profile-page"
-            element={<ProfilePage />}
-          />
-        </Routes>
-        <Footer />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <SearchPage
+              favorites={favorites}
+              onAddFavorite={handleAddFavorite}
+              onRemoveFavorite={handleRemoveFavorite}
+              onGetRepos={profile?.repos}
+              onProfile={setProfile}
+              onRepos={setRepos}
+            />
+          }
+        />
+        <Route
+          path="favorites"
+          element={<FavoritePage favorites={favorites} />}
+        />
+        <Route
+          path="profile-page"
+          element={<ProfilePage />}
+        />
+        <Route
+          path="repos"
+          element={<PublicReposPage profile={profile}/>}
+        />
+      </Routes>
+      <Footer />
     </Wrapper>
   );
 }

@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-// import { css } from "@emotion/react";
+import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
-import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
 import { BsGithub } from "react-icons/bs";
 import { colors } from "../styles"; 
 import styled from "@emotion/styled";
+import { getGithubUser } from "../services/github-service";
 
 
 const DivContainer = styled.div`
@@ -18,18 +18,18 @@ const DivContainer = styled.div`
   justify-content: space-between;
   `
 const Input = styled.input`
-margin-top: 32px;
-margin-bottom: 16px;
-text-align: center;
-box-shadow: 2px 2px rgb(0 0 0 / 25%);
-border-radius: 4px;
-fill: #FFFFFF;
-outline: none;
-border-style: none;
-`
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+  box-shadow: 2px 2px rgb(0 0 0 / 25%);
+  border-radius: 4px;
+  fill: #FFFFFF;
+  outline: none;
+  border-style: none;
+  `
   
-function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
-  const [query, setQuery] = useState([]);
+function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onRepos }) {
+  const [query, setQuery] = useState("");
   const [state, setState] = useState({
     status: "idle", // success - error - pending
     data: null,
@@ -37,12 +37,16 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
   });
   const { status, data: github, error } = state;
 
+
+  
   useEffect(() => {
+    if (query === "") return;
     getGithubUser(query)
-      .then((data) => {
-        // setState({
+    .then((data) => {
+      // setState({
         //   status: "pending",
         // });
+        onProfile(data)
         setState({
           status: "success",
           data: data,
@@ -65,7 +69,8 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
 
   const regularContent = (
     <>
-      <BsGithub color={colors.yellow[500]} /> No Users...
+      <BsGithub css={css`font-size: 160px; margin-bottom: 12px`} color={colors.black} />
+      <p css={css`font-size: 20xp; line-height: 25px; font-weight: 700; `}>No Users...</p>
     </>
   );
 
@@ -75,19 +80,20 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
           onChange={(event) => setQuery(event.target.value)}
           placeholder="username"
         />
+        {query === "" && regularContent}
+        {status === "success" && query !== "" && (
       <article>
-        {status === "idle" && regularContent}
-        {status === "success" && (
 					<GithubData
 					github={github}
 					onAddFavorite={onAddFavorite}
 					onRemoveFavorite={onRemoveFavorite}
 					isFavorite={isFavorite}
+          onRepos={onRepos}
+          onProfile={onProfile}
           />
+      </article>
 					)}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
-      </article>
-    
 			</DivContainer>
   );
 }
