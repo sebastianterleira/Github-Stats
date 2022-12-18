@@ -7,7 +7,6 @@ import { colors } from "../styles";
 import styled from "@emotion/styled";
 import { getGithubUser } from "../services/github-service";
 
-
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,6 +27,7 @@ const Input = styled.input`
   border-style: none;
   `
   
+
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onRepos }) {
   const [query, setQuery] = useState("");
   const [state, setState] = useState({
@@ -52,8 +52,10 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onR
           data: data,
           error: null,
         });
+        console.log(state);
       })
       .catch((error) => { // no muestra el error
+        console.log("bet");
         console.log(error);
         setState({
           status: "error",

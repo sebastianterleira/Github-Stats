@@ -10,6 +10,11 @@ import {
 } from "./services/favorites-services";
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
+import FollowerPage from "./pages/followers-page";
+import {
+getGithubFollowers,
+getGithubFollowing,
+} from "./services/github-service";
 import styled from "@emotion/styled";
 import PublicReposPage from "./pages/public-repos-page";
 import { getGithubRepos } from "./services/github-service";
@@ -24,15 +29,31 @@ flex-direction: column;
 position: relative;
 `
 
-
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
   const [repos, setRepos] = useState([]);
   const [profile, setProfile] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  
+  console.log("followers authenticate ---->");
+  // console.log(followers);
 
   useEffect(() => {
     getFavorites().then(setFavorites);
   }, []);
+
+  // useEffect(() => {
+  //   getGithubFollowers("pauloTijero").then(setFollowers);
+  //   console.log("setFollowers ------");
+  //   // console.log(followers);
+  // }, []);
+
+  function GetFollowers(user) {
+    console.log(user);
+    getGithubFollowers(user).then(setFollowers);
+    console.log("setFollowers ------");
+    console.log(followers);
+  }
 
   function handleAddFavorite(github) {
     const data = {
