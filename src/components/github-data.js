@@ -45,6 +45,12 @@ const CardData = styled("div")`
   background-color: #FFFFFF;
   box-shadow: 2px 2px rgb(0 0 0 / 25%);
   border-radius: 4px;
+  overflow: hidden;
+  transition: all 400ms ease;
+  &:hover {
+  box-shadow: 4px 4px rgb(0 0 0 / 50%);
+  transform: translateY(-3%);
+  }
 `;
 
 const CountData = styled("p")`
@@ -64,6 +70,24 @@ const LabelData = styled("p")`
 const DataImg = styled("div")`
   margin: auto;
   margin-top: 18px;
+`
+
+const UXUILinkData = styled("a")`
+  padding: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: #2fb4cc;
+  border: 1px solid #2fb4cc;
+  border-radius: 4px;
+  transition: all 400ms ease;
+  &:hover {
+    background: #2fb4cc;
+    color: #fff;
+  }
 `
 
 
@@ -98,7 +122,7 @@ export default function GithubData({
       <div className="container">
         <FavoriteButton
           onClick={() =>
-            isFavorite ? onRemoveFavorite("github") : onAddFavorite(github)
+            isFavorite ? onRemoveFavorite(github) : onAddFavorite(github)
           }
         >
           <h4 css={css`
@@ -113,6 +137,7 @@ export default function GithubData({
           font-size: 16px;
           font-weight: 400;
           line-height: 20px;
+          text-align: center;
         `}>{github.bio}</p>
         <ContainerCard>
           <Link css={css`text-decoration:none; color: black;`} to="/followers">
@@ -126,6 +151,7 @@ export default function GithubData({
               {github.followers}
             </CountData>
             <LabelData>followers</LabelData>
+            <UXUILinkData href="#">Ver mas</UXUILinkData>
           </CardData>
         </Link>
 
@@ -138,6 +164,7 @@ export default function GithubData({
             </DataImg>
             <CountData>{github.following}</CountData>
             <LabelData>following</LabelData>
+            <UXUILinkData href="#">Ver mas</UXUILinkData>
           </CardData>
         </Link>
 
@@ -150,6 +177,7 @@ export default function GithubData({
           </DataImg>
             <CountData>{github.public_repos}</CountData>
             <LabelData>public repos</LabelData>
+            <UXUILinkData href="#">Ver mas</UXUILinkData>
           </CardData>
           </Link>
 
@@ -161,6 +189,7 @@ export default function GithubData({
             </DataImg>
             <CountData>{github.public_gists}</CountData>
             <LabelData>public gists</LabelData>
+            <UXUILinkData href="#">Ver mas</UXUILinkData>
           </CardData>
         </ContainerCard>
       </div>

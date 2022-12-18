@@ -17,13 +17,17 @@ const Content = styled("div")`
 			align-items: center;
 			padding: 8px 12px;
 			gap: 8px;
-	
 			background: #ffffff;
 			box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
 			border-radius: 4px;
 			decoration: none;
-			cursor: pointer;
 			text-decoration:none;
+			overflow: hidden;
+			transition: all 400ms ease;
+			&:hover {
+			box-shadow: 4px 4px rgb(0 0 0 / 50%);
+			transform: translateY(-6%);
+		}
 		`;
 
 	const ContentDesc =styled("div")`
@@ -69,7 +73,17 @@ const Content = styled("div")`
   Ruby: "#A90700",
   CSS: "#1D27FF",
   HTML: "#F57D31",
-	TypeScript: "#2790FF"
+	TypeScript: "#2790FF",
+	"C#": "#BB1BFA",
+	Java: "#FC170A",
+	Vue: "#00F028",
+	Python: "#5A38DB",
+	Svelte: "#FA6405",
+	PHP: "#5476DB",
+	Go: "#4AA7DB",
+	Lua: "#1806DB",
+	"C++": "#5476DB",
+	Kotlin: "#845EDB"
 };
 
 const Lenguaje = styled("div")`

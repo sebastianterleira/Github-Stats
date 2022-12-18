@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 function FollowingCard({item}) {
 
-  const GithubCard = styled("div")`
+  const GithubCard = styled("a")`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,6 +14,15 @@ function FollowingCard({item}) {
   background: #ffffff;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+	text-decoration: none;
+  color: #000000;
+  text-decoration:none;
+	overflow: hidden;
+	transition: all 400ms ease;
+	&:hover {
+	box-shadow: 4px 4px rgb(0 0 0 / 50%);
+	transform: translateY(-6%);
+	}
 `;
 
   const Content = styled("div")`
@@ -37,7 +46,7 @@ function FollowingCard({item}) {
   `;
 
   return (
-    <GithubCard>
+    <GithubCard target="_blank" href={item.html_url} rel="noreferrer">
       <Content>
         <ImgGithub src={item.avatar_url} alt={item.name} />
         <Text>
