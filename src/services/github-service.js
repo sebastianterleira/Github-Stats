@@ -9,7 +9,7 @@ export function getGithubUser(query) {
 }
 
 export function getGithubFollowers(user) {
-  return fetch(BASE_URI + user + "/followers", {
+  return fetch(user, {
     method: "GET",
     headers: {
       Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 
@@ -17,7 +17,7 @@ export function getGithubFollowers(user) {
 }
 
 export function getGithubFollowing(user) {
-  return fetch(BASE_URI + user + "/following", {
+  return fetch(user, {
     method: "GET",
     headers: {
       Authorization: `token ${process.env.REACT_APP_SECRET_NAME}` 

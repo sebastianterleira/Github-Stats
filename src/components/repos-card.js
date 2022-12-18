@@ -1,10 +1,8 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { GiPlainCircle } from 'react-icons/gi';
 
 function RepoCard({item}) {
-  const Content = styled("div")`
+const Content = styled("div")`
     display: flex;
     flex-direction: row;
     align-items: center;

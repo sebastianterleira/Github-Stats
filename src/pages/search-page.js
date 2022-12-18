@@ -28,24 +28,20 @@ const Input = styled.input`
   `
   
 
-function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onRepos }) {
+function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
   const [query, setQuery] = useState("");
   const [state, setState] = useState({
-    status: "idle", // success - error - pending
+    status: "idle",
     data: null,
     error: null,
   });
   const { status, data: github, error } = state;
 
-
-  
   useEffect(() => {
     if (query === "") return;
+    setState({ status: "pending" })
     getGithubUser(query)
     .then((data) => {
-      // setState({
-        //   status: "pending",
-        // });
         onProfile(data)
         setState({
           status: "success",
@@ -54,7 +50,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onR
         });
         console.log(state);
       })
-      .catch((error) => { // no muestra el error
+      .catch((error) => {
         console.log("bet");
         console.log(error);
         setState({
@@ -63,16 +59,22 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onR
           error: "El usuario no existe! Intenta de nuevo",
         });
       });
-  }, [query]); // al inicio status idle -> loading -> success
+  }, [query]);
 
   const isFavorite = Boolean(
     favorites.find((fav) => fav.username === github?.login)
   );
 
-  const regularContent = (
+  const NoData = (
     <>
       <BsGithub css={css`font-size: 160px; margin-bottom: 12px`} color={colors.black} />
       <p css={css`font-size: 20xp; line-height: 25px; font-weight: 700; `}>No Users...</p>
+    </>
+  );
+  const DataPending = (
+    <>
+      <BsGithub css={css`font-size: 160px; margin-bottom: 12px`} color={colors.black} />
+      <p css={css`font-size: 20xp; line-height: 25px; font-weight: 700; `}>Retrieving user...</p>
     </>
   );
 
@@ -82,7 +84,8 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onR
           onChange={(event) => setQuery(event.target.value)}
           placeholder="username"
         />
-        {query === "" && regularContent}
+        {query === "" && NoData}
+        {status === "pending" && DataPending }
         {status === "success" && query !== "" && (
       <article>
 					<GithubData
@@ -90,7 +93,6 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile, onR
 					onAddFavorite={onAddFavorite}
 					onRemoveFavorite={onRemoveFavorite}
 					isFavorite={isFavorite}
-          onRepos={onRepos}
           onProfile={onProfile}
           />
       </article>
