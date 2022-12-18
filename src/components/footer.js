@@ -2,33 +2,36 @@ import styled from "@emotion/styled";
 import { RiSearchFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 import { RiUser3Fill } from "react-icons/ri";
+// import { colors } from "../styles";
 
-const Wrapper = styled("div")`
+const Navbar = styled("div")`
   display: flex;
   flex-direction: row;
   align-items: space-between;
-  padding: 0px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
   gap: 50px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 66px;
   box-shadow: 0px -2px 0px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 665px;
+  left: 0px;
 `;
 
 function Footer() {
   return (
-    <Wrapper>
+    <Navbar>
       <a href="/profile-page">
-        <RiUser3Fill />
+        <RiUser3Fill style={{height:43,width:43,color:"#BDBDBD"}}/>
       </a>
       <a href="/">
-        <RiSearchFill />
+        <RiSearchFill style={{height:43,width:43,color:"#828282"}}/>
       </a>
       <a href="/favorites">
-        <AiFillStar />
+        <AiFillStar style={{height:43,width:43,color:"#BDBDBD"}} />
       </a>
-    </Wrapper>
+    </Navbar>
   );
 }
 

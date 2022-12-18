@@ -25,6 +25,7 @@ function AuthProvider(props) {
 
   const value = {
     user,
+    setUser,
     login,
     logout,
     signup,

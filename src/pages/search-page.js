@@ -1,15 +1,32 @@
+/** @jsxImportSource @emotion/react */
+// import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
 import { getGithubUser } from "../services/github-service";
 import GithubData from "../components/github-data";
 import { BsGithub } from "react-icons/bs";
-import { colors } from "../styles/colors";
+import { colors } from "../styles"; 
+import styled from "@emotion/styled";
 
-import { Routes, Route } from "react-router-dom";
-import FollowerPage from "../pages/followers-page";
-import {
-getGithubFollowers,
-} from "../services/github-service";
-
+const DivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	max-width: 640px;
+  padding: 0px 16px;
+	margin: auto;
+  justify-content: space-between;
+  `
+const Input = styled.input`
+margin-top: 32px;
+margin-bottom: 16px;
+text-align: center;
+box-shadow: 2px 2px rgb(0 0 0 / 25%);
+border-radius: 4px;
+fill: #FFFFFF;
+outline: none;
+border-style: none;
+`
+  
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers }) {
   const [query, setQuery] = useState([]);
   const [state, setState] = useState({
@@ -18,8 +35,6 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers })
     error: null,
   });
   const { status, data: github, error } = state;
-
-  // const [followers, setFollowers] = useState([]);
 
   useEffect(() => {
     getGithubUser(query)
@@ -46,16 +61,6 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers })
       });
   }, [query]); // al inicio status idle -> loading -> success
 
-  // useEffect(() => {
-
-  // }, []);
-
-  function GetFollowers() {
-    getGithubFollowers("pauloTijero").then(onFollowers);
-    console.log("setFollowers ------");
-    // console.log(followers);
-  }
-
   const isFavorite = Boolean(
     favorites.find((fav) => fav.username === github?.login)
   );
@@ -67,13 +72,11 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers })
   );
 
   return (
-    <div className="grid">
-      <div>
-        <input
+      <DivContainer>
+        <Input 		
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Ingresa el nombre de usuario"
+          placeholder="username"
         />
-      </div>
       <article>
         {status === "idle" && regularContent}
         {status === "success" && (
@@ -82,13 +85,14 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers })
             onAddFavorite={onAddFavorite}
             onRemoveFavorite={onRemoveFavorite}
             isFavorite={isFavorite}
-            fnFollowers = {GetFollowers}
+            onFollowers = {onFollowers}
           />
-        )}
+					)}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
         
       </article>
-    </div>
+    
+			</DivContainer>
   );
 }
 

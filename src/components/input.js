@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors } from "../styles";
 
@@ -8,6 +10,11 @@ const StyledInput = styled("input")`
   ::placeholder {
     color: ${colors.gray.light};
   }
+  box-shadow: 2px 2px rgb(0 0 0 / 25%);
+  border-radius: 4px;
+  fill: #FFFFFF;
+  outline: none;
+  border-style: none;
 `;
 
 function Input({
@@ -22,7 +29,9 @@ function Input({
   return (
     <div>
       {label && <label htmlFor={id || name}>{label}</label>}
-      <StyledInput
+      <StyledInput css={css`
+          display: flex;
+          `}
         id={id || name}
         name={name}
         type={type}
