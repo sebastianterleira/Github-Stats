@@ -7,7 +7,6 @@ import { BsGithub } from "react-icons/bs";
 import { colors } from "../styles"; 
 import styled from "@emotion/styled";
 
-
 const DivContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,7 +27,7 @@ outline: none;
 border-style: none;
 `
   
-function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
+function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onFollowers }) {
   const [query, setQuery] = useState([]);
   const [state, setState] = useState({
     status: "idle", // success - error - pending
@@ -43,13 +42,16 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
         // setState({
         //   status: "pending",
         // });
+        console.log(data);
         setState({
           status: "success",
           data: data,
           error: null,
         });
+        console.log(state);
       })
       .catch((error) => { // no muestra el error
+        console.log("bet");
         console.log(error);
         setState({
           status: "error",
@@ -78,14 +80,16 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite }) {
       <article>
         {status === "idle" && regularContent}
         {status === "success" && (
-					<GithubData
-					github={github}
-					onAddFavorite={onAddFavorite}
-					onRemoveFavorite={onRemoveFavorite}
-					isFavorite={isFavorite}
+          <GithubData
+            github={github}
+            onAddFavorite={onAddFavorite}
+            onRemoveFavorite={onRemoveFavorite}
+            isFavorite={isFavorite}
+            onFollowers = {onFollowers}
           />
 					)}
         {status === "error" && <p style={{ color: "red" }}>{error}</p>}
+        
       </article>
     
 			</DivContainer>

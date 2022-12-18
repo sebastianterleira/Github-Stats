@@ -10,6 +10,11 @@ import {
 } from "./services/favorites-services";
 import Footer from "./components/footer";
 import ProfilePage from "./pages/profile-page";
+import FollowerPage from "./pages/followers-page";
+import {
+getGithubFollowers,
+getGithubFollowing,
+} from "./services/github-service";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
@@ -22,13 +27,29 @@ flex-direction: column;
 position: relative;
 `
 
-
 function AuthenticatedApp() {
   const [favorites, setFavorites] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  
+  console.log("followers authenticate ---->");
+  // console.log(followers);
 
   useEffect(() => {
     getFavorites().then(setFavorites);
   }, []);
+
+  // useEffect(() => {
+  //   getGithubFollowers("pauloTijero").then(setFollowers);
+  //   console.log("setFollowers ------");
+  //   // console.log(followers);
+  // }, []);
+
+  function GetFollowers(user) {
+    console.log(user);
+    getGithubFollowers(user).then(setFollowers);
+    console.log("setFollowers ------");
+    console.log(followers);
+  }
 
   function handleAddFavorite(github) {
     const data = {
@@ -65,6 +86,8 @@ function AuthenticatedApp() {
                 favorites={favorites}
                 onAddFavorite={handleAddFavorite}
                 onRemoveFavorite={handleRemoveFavorite}
+                // onFollowers = {setFollowers}
+                onFollowers = {GetFollowers}
               />
             }
           />
@@ -75,6 +98,10 @@ function AuthenticatedApp() {
           <Route
             path="profile-page"
             element={<ProfilePage />}
+          />
+          <Route
+            path="followers"
+            element={<FollowerPage followers1={followers} />}
           />
         </Routes>
         <Footer />

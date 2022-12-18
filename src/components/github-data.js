@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 // import { colors } from "../styles"
 import { typography } from "../styles/typography";
+import { Link } from "react-router-dom";
 
 const FavoriteButton = styled("button")`
 display: flex;
@@ -66,11 +67,13 @@ const DataImg = styled("div")`
   margin-top: 18px;
 `
 
+
 export default function GithubData({ 
   github,
   isFavorite,
   onAddFavorite,
-  onRemoveFavorite
+  onRemoveFavorite,
+  onFollowers,
 }) {
 
   const regularContent = (
@@ -93,32 +96,41 @@ export default function GithubData({
     <div>
     <GitHubImage src={github.avatar_url} alt="avatar"/>
       <div className="container">
+
+        {/* <h4>{github.login}</h4> */}
+        {/* <h4>{github.id}</h4> */}
+        {/* <p>star</p> */}
         <FavoriteButton
-        onClick={() =>
-          isFavorite ? onRemoveFavorite(github) : onAddFavorite(github)
-        }
-      >
-        <h4 css={css`
-          font-weight: 800;
-          font-size: 20px;
-          line-height: 25px;
-          text-align: center;
-        `}>{github.name}</h4>
-        {isFavorite ? favoriteContent : regularContent}
-      </FavoriteButton>
+          onClick={() =>
+            isFavorite ? onRemoveFavorite("github") : onAddFavorite(github)
+          }
+        >
+          <h4 css={css`
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 25px;
+            text-align: center;
+          `}>{github.name}</h4>
+          {isFavorite ? favoriteContent : regularContent}
+        </FavoriteButton>
         <p css={css`
           font-size: 16px;
           font-weight: 400;
           line-height: 20px;
         `}>{github.bio}</p>
         <ContainerCard>
-          <CardData>
+          <CardData onClick={() => {onFollowers(github.login)}}>
             <DataImg>
               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M25 22.5C28.3152 22.5 31.4946 23.817 33.8388 26.1612C36.183 28.5054 37.5 31.6848 37.5 35V50H12.5V35C12.5 31.6848 13.817 28.5054 16.1612 26.1612C18.5054 23.817 21.6848 22.5 25 22.5ZM8.22 30.015C7.82214 31.357 7.58712 32.7419 7.52 34.14L7.5 35V50H2.28292e-07V38.75C-0.000492018 36.5939 0.795071 34.5136 2.23409 32.908C3.6731 31.3025 5.65425 30.2847 7.7975 30.05L8.2225 30.015H8.22ZM41.78 30.015C44.0048 30.1506 46.094 31.1299 47.6215 32.7531C49.149 34.3763 49.9997 36.5211 50 38.75V50H42.5V35C42.5 33.2675 42.25 31.595 41.78 30.015ZM8.75 15C10.4076 15 11.9973 15.6585 13.1694 16.8306C14.3415 18.0027 15 19.5924 15 21.25C15 22.9076 14.3415 24.4973 13.1694 25.6694C11.9973 26.8415 10.4076 27.5 8.75 27.5C7.0924 27.5 5.50269 26.8415 4.33058 25.6694C3.15848 24.4973 2.5 22.9076 2.5 21.25C2.5 19.5924 3.15848 18.0027 4.33058 16.8306C5.50269 15.6585 7.0924 15 8.75 15ZM41.25 15C42.9076 15 44.4973 15.6585 45.6694 16.8306C46.8415 18.0027 47.5 19.5924 47.5 21.25C47.5 22.9076 46.8415 24.4973 45.6694 25.6694C44.4973 26.8415 42.9076 27.5 41.25 27.5C39.5924 27.5 38.0027 26.8415 36.8306 25.6694C35.6585 24.4973 35 22.9076 35 21.25C35 19.5924 35.6585 18.0027 36.8306 16.8306C38.0027 15.6585 39.5924 15 41.25 15ZM25 0C27.6522 0 30.1957 1.05357 32.0711 2.92893C33.9464 4.8043 35 7.34784 35 10C35 12.6522 33.9464 15.1957 32.0711 17.0711C30.1957 18.9464 27.6522 20 25 20C22.3478 20 19.8043 18.9464 17.9289 17.0711C16.0536 15.1957 15 12.6522 15 10C15 7.34784 16.0536 4.8043 17.9289 2.92893C19.8043 1.05357 22.3478 0 25 0Z" fill="#2D9CDB"/>
               </svg>
             </DataImg>
-            <CountData>{github.followers}</CountData>
+            <CountData>
+              <Link to="/followers">{github.followers}</Link>
+              {/* <a href="/followers" >
+                {github.followers}
+              </a> */}
+            </CountData>
             <LabelData>followers</LabelData>
           </CardData>
 
@@ -128,7 +140,8 @@ export default function GithubData({
               <path d="M34.6025 37.1475L35.0425 37.59L35.4875 37.1475C36.0098 36.6252 36.6299 36.2108 37.3124 35.9281C37.9949 35.6455 38.7263 35.5 39.465 35.5C40.2037 35.5 40.9351 35.6455 41.6176 35.9281C42.3001 36.2108 42.9202 36.6252 43.4425 37.1475C43.9648 37.6698 44.3792 38.2899 44.6619 38.9724C44.9445 39.6549 45.09 40.3863 45.09 41.125C45.09 41.8637 44.9445 42.5951 44.6619 43.2776C44.3792 43.9601 43.9648 44.5802 43.4425 45.1025L35.0425 53.5L26.6475 45.1025C25.5926 44.0476 25 42.6169 25 41.125C25 39.6331 25.5926 38.2024 26.6475 37.1475C27.7024 36.0926 29.1331 35.5 30.625 35.5C32.1169 35.5 33.5476 36.0926 34.6025 37.1475ZM20 33V53H0C6.02717e-05 47.8039 2.02234 42.8119 5.63867 39.0807C9.25501 35.3496 14.1815 33.1724 19.375 33.01L20 33ZM20 0.5C28.2875 0.5 35 7.2125 35 15.5C35 23.7875 28.2875 30.5 20 30.5C11.7125 30.5 5 23.7875 5 15.5C5 7.2125 11.7125 0.5 20 0.5Z" fill="#F2994A"/>
               </svg>
             </DataImg>
-            <CountData>{github.following}</CountData>
+            <CountData>
+             {github.following}</CountData>
             <LabelData>following</LabelData>
           </CardData>
 
