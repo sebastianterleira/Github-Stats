@@ -4,6 +4,7 @@ import Input from "../components/input";
 import styled from "@emotion/styled";
 import { colors, typography } from "../styles"
 import { updateUser } from "../services/user-services";
+import { tokenKey } from "../config";
 
 const Wrapper = styled.div`
 height: 100%;
@@ -47,16 +48,15 @@ function ProfilePage() {
   const [data, setData] = useState({...user, password:""})
   
   function handleSubmit(event){
-    event.preventDefault();
     updateUser(data).then((response =>{
       setUser(response)
     })).catch(error=> console.log(error))
+    sessionStorage.removeItem(tokenKey)
   }
 
   function handleChange(event){
     event.preventDefault();
     setData({...data, [event.target.name]: event.target.value})
-    console.log(data)
   }
   return (
     <Wrapper>
