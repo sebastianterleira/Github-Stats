@@ -5,7 +5,6 @@ import { getGithubRepos } from "../services/github-service";
 
 const Wrapper = styled("div")`
 padding: 20px;
-margin: auto;
 height: 100%;
 display: flex;
 justify-content: center;
