@@ -28,7 +28,6 @@ const GitHubImage = styled("img")`
 
 const ContainerCard = styled("div")`
   margin-top: 16px;
-  height:120px;
   display:grid;
   grid-template-columns: 140px 120px;
   grid-row: auto auto;
