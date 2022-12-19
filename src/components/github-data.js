@@ -28,7 +28,6 @@ const GitHubImage = styled("img")`
 
 const ContainerCard = styled("div")`
   margin-top: 16px;
-  height:120px;
   display:grid;
   grid-template-columns: 140px 120px;
   grid-row: auto auto;
@@ -128,7 +127,7 @@ export default function GithubData({
             font-size: 20px;
             line-height: 25px;
             text-align: center;
-          `}>{github.name === null ? "No tengo nombre" : github.name}</h4>
+          `}>{github.name === null ? "Olvide ponerme un nombre :v" : github.name}</h4>
           {isFavorite ? favoriteContent : regularContent}
         </FavoriteButton>
         <p css={css`
@@ -136,7 +135,7 @@ export default function GithubData({
           font-weight: 400;
           line-height: 20px;
           text-align: center;
-        `}>{github.bio === null ? "Olvide ponerme una biografia" : github.bio}</p>
+        `}>{github.bio === null ? "Olvide ponerme una biografia :v" : github.bio}</p>
         <ContainerCard>
           <Link css={css`text-decoration:none; color: black;`} to="/followers">
           <CardData>

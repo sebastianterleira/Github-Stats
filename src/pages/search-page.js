@@ -26,7 +26,6 @@ const Input = styled.input`
   outline: none;
   border-style: none;
   `
-  
 
 function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
   const [query, setQuery] = useState("");
@@ -57,7 +56,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
           error: "El usuario no existe! Intenta de nuevo o perdio Conexion 💀",
         });
       });
-  }, [query, onProfile]);
+  }, [onProfile, query]);
 
   const isFavorite = Boolean(
     favorites.find((fav) => fav.username === github?.login)
