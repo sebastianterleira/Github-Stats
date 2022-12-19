@@ -31,6 +31,9 @@ const ButtonLogin = styled.button`
   justify-content: center;
   align-items: center;
   margin-bottom: 32px;
+  &:hover{
+    background: #1278F5;
+  }
 `
 
 function LoginForm() {

@@ -41,6 +41,9 @@ height: 36px;
 display: flex;
 justify-content: center;
 align-items: center;
+&:hover{
+    background: #1278F5;
+}
 `
 
 function ProfilePage() {

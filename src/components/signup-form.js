@@ -20,6 +20,9 @@ const ButtonSingUp = styled.button`
   align-items: center;
   margin-top: 15px;
   margin-bottom: 32px;
+  &:hover{
+    background: #1278F5;
+  }
 `
 
 function SignupForm() {
