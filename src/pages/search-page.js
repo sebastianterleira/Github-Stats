@@ -57,7 +57,7 @@ function SearchPage({ favorites, onAddFavorite, onRemoveFavorite, onProfile }) {
           error: "El usuario no existe! Intenta de nuevo o perdio Conexion 💀",
         });
       });
-  }, [query]);
+  }, [query, onProfile]);
 
   const isFavorite = Boolean(
     favorites.find((fav) => fav.username === github?.login)
