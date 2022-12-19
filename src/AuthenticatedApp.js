@@ -96,7 +96,7 @@ function AuthenticatedApp() {
         />
       </Routes>
     </Wrapper>
-    <Footer />
+  <Footer />
     </>
   );
 }
