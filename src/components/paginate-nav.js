@@ -12,8 +12,14 @@ const Text = styled("p")`
 `;
 
 function PaginateNav({ profile, onPage, page }) {
-  let number = profile.followers / 7;
-  const arr = Array.from({ length: number }, (_, i) => i + 1);
+  const number = Math.ceil(profile.followers / 6);
+  const range = (start, stop, step) =>
+    Array.from(
+      { length: (stop - start) / step + 1 },
+      (_, i) => start + i * step
+    );
+  const arr =
+    page > number-4 ? range(number-4, number, 1) : range(page, page+4, 1);
 
   function chevronleft() {
     onPage(page - 1);
