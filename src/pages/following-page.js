@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import FollowingCard from "../components/following-card";
 import { useEffect, useState } from "react";
 import { getGithubFollowing } from "../services/github-service";
+import PaginateNav from "../components/paginate-nav";
 
 const Wrapper = styled("div")`
   display: flex;
@@ -19,14 +20,17 @@ const Title = styled.h1`
 function FollowingPage({ profile }){
 
   const [following, setFollowing] = useState([]);
+  const [page, setPage] = useState(1);
+
 
     useEffect(() => {
-      getGithubFollowing(profile.url + "/following").then(setFollowing)
-    }, [profile])
+      getGithubFollowing(profile.url + `/following?per_page=6&page=${page}`).then(setFollowing)
+    }, [profile, page])
 
   return (
     <Wrapper>
-      <Title>Following ({following.length})</Title> 
+      <PaginateNav profile={profile} onPage={setPage} page={page} />
+      <Title>Following ({profile.following})</Title> 
       {following.map((fav, index) => (
         <FollowingCard key={`git${index}`} item={fav} />
       ))}
