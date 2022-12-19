@@ -71,7 +71,7 @@ const DataImg = styled("div")`
   margin-top: 18px;
 `
 
-const UXUILinkData = styled("a")`
+const UXUILinkData = styled("div")`
   padding: 2px;
   font-size: 12px;
   font-weight: 400;
@@ -148,7 +148,7 @@ export default function GithubData({
               {github.followers}
             </CountData>
             <LabelData>followers</LabelData>
-            <UXUILinkData href="#">Ver mas</UXUILinkData>
+            <UXUILinkData>Ver mas</UXUILinkData>
           </CardData>
         </Link>
 
@@ -161,7 +161,7 @@ export default function GithubData({
             </DataImg>
             <CountData>{github.following}</CountData>
             <LabelData>following</LabelData>
-            <UXUILinkData href="#">Ver mas</UXUILinkData>
+            <UXUILinkData>Ver mas</UXUILinkData>
           </CardData>
         </Link>
 
@@ -174,7 +174,7 @@ export default function GithubData({
           </DataImg>
             <CountData>{github.public_repos}</CountData>
             <LabelData>public repos</LabelData>
-            <UXUILinkData href="#">Ver mas</UXUILinkData>
+            <UXUILinkData>Ver mas</UXUILinkData>
           </CardData>
           </Link>
 
@@ -186,7 +186,7 @@ export default function GithubData({
             </DataImg>
             <CountData>{github.public_gists}</CountData>
             <LabelData>public gists</LabelData>
-            <UXUILinkData href="#">Ver mas</UXUILinkData>
+            <UXUILinkData>Ver mas</UXUILinkData>
           </CardData>
         </ContainerCard>
       </div>

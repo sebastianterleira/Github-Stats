@@ -5,6 +5,9 @@ const Wrapper = styled("div")`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 17px;
 `;
 
 const Text = styled("p")`
