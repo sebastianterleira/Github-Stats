@@ -33,7 +33,7 @@ function PublicReposPage({profile}){
   return (
     <Wrapper>
       <PaginateNav profile={profile} onPage={setPage} page={page} />
-      <Title>Public repos ({profile.repos})</Title>
+      <Title>Public repos ({repos.length})</Title>
       {repos?.map((rep, index) => (
         <RepoCard key={`rep${index}`} item={rep} />
       ))}
